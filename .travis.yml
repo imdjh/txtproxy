@@ -8,8 +8,8 @@ python:
 
 # dependencies
 install:
-        - "pip install -q dnsq"
-        - "pip install -q flask"
+        - "pip install -r requirements.txt"
 
 # fireup app
-script: txtproxy.py
+script:
+       python txtproxy.py
