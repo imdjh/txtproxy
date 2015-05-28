@@ -1,4 +1,4 @@
-# TXTproxy
+# TXTproxy [![Build Status](https://travis-ci.org/imdjh/txtproxy.svg?branch=master)](https://travis-ci.org/imdjh/txtproxy)
 A gateway website which redirecting to one's domain name TXT record.
 
 
