@@ -1,1 +1,1 @@
-web: python txtproxy.py
+web: gunicorn txtproxy:app --log-file -
