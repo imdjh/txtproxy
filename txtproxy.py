@@ -4,7 +4,7 @@
 # version 0.0.1
 # Author: dye Jarhoo
 
-from flask import Flask, render_template, url_for, abort
+from flask import Flask, render_template, send_from_directory, abort
 import dnsq
 
 # Fireup our little app ;)
@@ -34,7 +34,7 @@ def textproxy(req):
 @app.route('/favicon.ico')
 def offerFavicon():
     """Offer Favicon file"""
-    url_for('static', filename='favicon.ico')
+    return send_from_directory('static', 'favicon.ico')
 
 
 if __name__ == '__main__':
