@@ -42,7 +42,7 @@ class dnTestCase(unittest.TestCase):
 
     # valid tests
     def test_tp_validDN_trailingspace(self):
-        rv = self.app.get('/tp/example.cn.   ', follow_redirects=False)
+        rv = self.app.get('/tp/example.cn   ', follow_redirects=False)
         assert 'Not Found' in rv.data
 
     def test_tp_validDN_trailngDoubleDot(self):
@@ -50,7 +50,7 @@ class dnTestCase(unittest.TestCase):
         assert 'Not Found' in rv.data
 
     def test_tp_validDN_trailingDot(self):
-        rv = self.app.get('/tp/cc.cc.', follow_redirects=False)
+        rv = self.app.get('/tp/never-does-eexxcc.cc.', follow_redirects=False)
         assert 'Not Found' in rv.data
 
     def test_tp_validDN_subdomain(self):
