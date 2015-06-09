@@ -1,0 +1,97 @@
+{## Switches ##}
+{% set enableGithubButton = True %}
+
+{## Varibles ##}
+{% set projName = 'txtproxy' %}
+{% set projDescript = 'Gateway redirecting(proxy) to one\'s domain name TXT record.' %}
+{% set projHomeURI = '/' %}
+{% set projAuthorContact = 'http://www.djh.im/' %}
+
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <title>首页 | {{ projName }} | {{ projDescript }} ;)</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{{ projDescript }}">
+  <meta name="keywords" content="{{ projName }}, dummy landing-page">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/i/favicon.png') }}">
+  <link rel="alternate icon" type="image/png" href="{{ url_for('static', filename='assets/i/favicon.png') }}">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='assets/i/app-icon72x72@2x.png') }}">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="green">
+  <meta name="apple-mobile-web-app-title" content="{{ projName }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='assets/i/app-icon72x72@2x.png') }}">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="{{ url_for('static', filename='assets/i/app-icon72x72@2x.png') }}">
+  <meta name="msapplication-TileColor" content="#008000">
+
+  <link rel="stylesheet" href="{{ url_for('static',
+  filename='assets/css/amazeui.flat.min.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/my.css') }}"/>
+</head>
+
+
+<body style="overflow-x: hidden;">
+<header class="am-topbar-inverse am-topbar-fixed-top">
+  <div class="am-container">
+          <h2 class="am-topbar-brand">{{ projName }}</h2>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+              <li class="am-active"><a href="{{ projHomeURI }}">首页</a></li>
+              <li ><a href="{{ projAuthorContact }}" target="_blank">关于作者</a></li> </ul>
+
+      {% if enableGithubButton %}
+          <div class="am-topbar-right">
+            <div class="am-vertical-align">
+              <div class="am-vertical-align-middle">
+          {% include "header-github-button.html" %}
+              </div>
+            </div>
+          </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+</header>
+
+{% include "content-showbox.html" %}
+{% include "content-funcbox.html" %}
+
+{% include "footer-copyright.html" %}
+
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="{{ url_for('static', filename='assets/js/polyfill/rem.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/polyfill/respond.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/amazeui.legacy.js') }}"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/amazeui.min.js') }}"></script>
+<!--<![endif]-->
+
+{% if enableGithubButton %}
+    <!-- Place this tag right after the last button or just before your close body tag. -->
+    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+{% endif %}
+
+{% include "additional-js.html" %}
+</body>
+</html>

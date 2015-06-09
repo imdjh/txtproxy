@@ -17,7 +17,7 @@ class dnTestCase(unittest.TestCase):
 
     def test_index(self):
         rv = self.app.get('/', follow_redirects=False)
-        assert 'Not Found' in rv.data
+        assert 'txtproxy' in rv.data
 
     # invalid tests
     def test_tp_invalidDN_singleDot(self):

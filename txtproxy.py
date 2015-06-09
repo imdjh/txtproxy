@@ -4,7 +4,7 @@
 # version 0.1.0
 # Author: dye Jarhoo
 
-from flask import Flask, render_template, send_from_directory, abort
+from flask import Flask, render_template, send_from_directory, abort, request, redirect
 import dnsq
 
 # Fireup our little app ;)
@@ -46,6 +46,18 @@ def textproxy(req):
 def offerFavicon():
     """Offer Favicon file"""
     return send_from_directory('static', 'favicon.ico')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def offerIndex():
+    if request.method == 'GET':
+        return render_template('index.html')
+    else:
+        req = request.form.get('request')
+        if req:
+            return redirect('/tp/' + req, code=302)
+        else:
+            abort(400)
 
 
 if __name__ == '__main__':
