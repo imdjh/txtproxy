@@ -1,14 +1,9 @@
-#!/usr/bin/env python
 # coding=utf-8
-# Domainname redirect according it's TXT record
-# version 0.1.0
-# Author: dye Jarhoo
+# Model to accept requests
 
-from flask import Flask, render_template, send_from_directory, abort, request, redirect
+from txtproxy import app
+from flask import render_template, abort
 import dnsq
-
-# Fireup our little app ;)
-app = Flask(__name__)
 
 
 def checkdn(str):
@@ -40,25 +35,3 @@ def textproxy(req):
             abort(404)
     # the request domain name is error
     abort(400)
-
-
-@app.route('/favicon.ico')
-def offerFavicon():
-    """Offer Favicon file"""
-    return send_from_directory('static', 'favicon.ico')
-
-
-@app.route('/', methods=['GET', 'POST'])
-def offerIndex():
-    if request.method == 'GET':
-        return render_template('index.html')
-    else:
-        req = request.form.get('request')
-        if req:
-            return redirect('/tp/' + req, code=302)
-        else:
-            abort(400)
-
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')

@@ -4,7 +4,7 @@
 # ver 0.1.0
 # Author: dye Jarhoo
 
-import txtproxy
+from .. import txtproxy
 import unittest
 
 

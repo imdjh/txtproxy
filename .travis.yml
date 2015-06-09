@@ -7,4 +7,4 @@ install:
         - "pip install -r requirements.txt"
 
 script:
-       python test_dn.py
+        python -m txtproxy.testsuit.domainname
